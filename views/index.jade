@@ -1,0 +1,23 @@
+extends layout
+
+block head
+	script(src="app.js")
+
+block content
+	.navbar.navbar-fixed-top
+		.navbar-inner
+			.container
+				a.brand(href='#') Tope's JS Blog
+	.container
+		.row-fluid
+			.span10
+				#articles.bs-dos-example(style='padding-top: 50px')
+					- each article in articles
+						.span3.thumbnail.pull-left(style="width: 30%; overflow: auto; margin-bottom: 10px;")
+								.title 
+									a(href="/blog/"+article._id.toHexString())!= article.title
+								hr
+								.media-body= article.body
+								.media-footer=article.created_at
+			.span2.pull-right(style="margin-top:50px;") 
+					img(src="/images/gplus.jpg")
